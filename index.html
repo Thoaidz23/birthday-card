@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Background Responsive</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 79%;
+      height: 100%;
+      margin-left: 20%;
+    }
+
+    body {
+      background-image: url("hinhanh/nen.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; /* 💻 MÁY TÍNH */
+
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    /* 📱 iPhone 14 Pro & điện thoại */
+    @media screen and (max-width: 430px) {
+      body {
+        background-size: contain;   /* 👉 thu nhỏ ảnh */
+        background-color: #000;     /* nền đen cho phần trống */
+        background-position: center center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+</body>
+</html>
