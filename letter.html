@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Chúc mừng sinh nhật</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f7a6b8;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  padding-top: 40px;
+}
+
+h2 {
+  color: #ad1457;
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+
+/* 📖 BOOK */
+.book {
+  width: 320px;
+  height: 420px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 1200px;
+}
+/* 🔗 LINK BẤT NGỜ */
+.surprise-link {
+  margin-top: auto;          /* đẩy xuống dưới cùng */
+  display: block;
+   /* tắt gạch chân */
+  font-weight: bold;         /* chữ đậm */
+  color: #e91e63;            /* màu đỏ hồng */
+  font-size: 15px;
+}
+
+/* ✉️ THƯ (BÊN TRONG – KHÁC BÌA) */
+.letter {
+  border: 2px solid #fff; /* 👉 viền trắng 2px */
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  z-index: 1;
+   display: flex;             /* 👉 thêm */
+  flex-direction: column;
+}
+
+.letter h3 {
+  margin-top: 0;
+  color: #e91e63;
+  letter-spacing: 1px;
+}
+
+.letter p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* 📕 BÌA ẢNH */
+.cover {
+  
+  border: 2px solid #fff; /* 👉 viền trắng 2px */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  transform-origin: left center;
+  transition: transform 1.1s ease;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  background: #fff;
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 👉 MỞ HÉ (KHÔNG 180°) */
+.book.open .cover {
+  transform: rotateY(-110deg);
+}
+
+/* BUTTON */
+.button {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 12px 26px;
+  background: #ec407a;
+  color: white;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ❤️ TIM */
+.heart {
+  position: absolute;
+  color: #e91e63;
+  font-size: 16px;
+  animation: float 6s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+/* 🌸 HIỆU ỨNG CHUYỂN TRANG */
+.page-transition {
+  animation: fadeOut 0.8s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Chúc mừng sinh nhật Công Chúa
+    <br> Nguyễn Hoàng Dung💕</h2>
+
+  <div class="book" id="book">
+
+    <!-- THƯ -->
+    <div class="letter">
+      <h3>HAPPY BIRTHDAY 🎂</h3>
+      <p>
+        Chúc mừng sinh nhật em yêu 💖<br><br>
+        Mong em luôn vui vẻ, hạnh phúc  
+        và luôn mỉm cười thật tươi 🌸<br><br>
+        Anh mong rằng anh sẽ luôn  
+        là người bên cạnh em 💌
+      </p>
+      
+     <a href="#" class="surprise-link" onclick="goSurprise(event)">
+  Ấn vào đi sẽ có bất ngờ ❤️
+</a>
+
+
+    </div>
+
+    <!-- BÌA -->
+    <div class="cover">
+      <img src="hinhanh/nen.png">
+    </div>
+
+  </div>
+
+  <div class="button" onclick="openGift()">MỞ QUÀ NÈ</div>
+</div>
+
+<script>
+function openGift() {
+  document.getElementById("book").classList.add("open");
+}
+
+/* tim bay */
+for (let i = 0; i < 12; i++) {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+  document.body.appendChild(heart);
+}
+function openGift() {
+  document.getElementById("book").classList.add("open");
+}
+
+/* 🌸 CHUYỂN TRANG MƯỢT */
+function goSurprise(e) {
+  e.preventDefault(); // chặn chuyển trang ngay
+
+  // thêm hiệu ứng fade out
+  document.body.classList.add("page-transition");
+
+  // đợi animation xong rồi mới sang trang mới
+  setTimeout(() => {
+    window.location.href = "suprise.html";
+  }, 800);
+}
+
+/* ❤️ tim bay */
+for (let i = 0; i < 12; i++) {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>

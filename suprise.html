@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Surprise 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #f7a6b8;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ẢNH BAY */
+.photo {
+  position: absolute;
+  left: -200px;
+  width: 180px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  background: #fff;
+
+  animation-name: fly;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fly {
+  from {
+    transform: translateX(-200px);
+  }
+  to {
+    transform: translateX(calc(100vw + 200px));
+  }
+}
+
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .photo {
+    width: 120px;
+    height: 180px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 📸 DANH SÁCH ẢNH -->
+<img src="hinhanh/anhtrong.jpg" class="photo">
+<img src="hinhanh/a1.jpg" class="photo">
+<img src="hinhanh/a2.jpg" class="photo">
+<img src="hinhanh/a3.jpg" class="photo">
+<img src="hinhanh/a4.jpg" class="photo">
+<img src="hinhanh/a5.jpg" class="photo">
+<img src="hinhanh/a6.jpg" class="photo">
+<img src="hinhanh/a7.jpg" class="photo">
+<img src="hinhanh/a8.jpg" class="photo">
+<img src="hinhanh/a9.jpg" class="photo">
+<img src="hinhanh/anhtrong.jpg" class="photo">
+<img src="hinhanh/a1.jpg" class="photo">
+<img src="hinhanh/a2.jpg" class="photo">
+<img src="hinhanh/a3.jpg" class="photo">
+<img src="hinhanh/a4.jpg" class="photo">
+<img src="hinhanh/a5.jpg" class="photo">
+<img src="hinhanh/a6.jpg" class="photo">
+<img src="hinhanh/a7.jpg" class="photo">
+<img src="hinhanh/a8.jpg" class="photo">
+<img src="hinhanh/a9.jpg" class="photo">
+<img src="hinhanh/anhtrong.jpg" class="photo">
+<img src="hinhanh/a1.jpg" class="photo">
+<img src="hinhanh/a2.jpg" class="photo">
+<img src="hinhanh/a3.jpg" class="photo">
+<img src="hinhanh/a4.jpg" class="photo">
+<img src="hinhanh/a5.jpg" class="photo">
+<img src="hinhanh/a6.jpg" class="photo">
+<img src="hinhanh/a7.jpg" class="photo">
+<img src="hinhanh/a8.jpg" class="photo">
+<img src="hinhanh/a9.jpg" class="photo">
+<script>
+const photos = document.querySelectorAll(".photo");
+const total = photos.length;
+const duration = 40; // tổng thời gian trôi (giây)
+
+photos.forEach((photo, index) => {
+  // cao thấp ngẫu nhiên
+  photo.style.top = Math.random() * 70 + "vh";
+
+  // xoay nghiêng ngẫu nhiên
+  const rotate = Math.random() * 40 - 30;
+  photo.style.setProperty("--rotate", rotate + "deg");
+
+  // tất cả cùng tốc độ
+  const duration = Math.random() * 20 + 20;
+  photo.style.animationDuration = duration + "s";
+
+  // delay chia đều → KHÔNG CÓ KHOẢNG TRỐNG
+  photo.style.animationDelay = `-${(duration / total) * index}s`;
+});
+</script>
+
+</body>
+</html>

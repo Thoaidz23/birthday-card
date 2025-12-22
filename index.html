@@ -1,36 +1,169 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <title>Background Responsive</title>
-  <style>
-    html, body {
-      margin: 0;
-      width: 79%;
-      height: 100%;
-      margin-left: 20%;
-    }
+<meta charset="UTF-8">
+<title>Nhập ngày sinh</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      background-image: url("hinhanh/nen.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover; /* 💻 MÁY TÍNH */
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7a6b8;
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+}
 
-      font-family: "Segoe UI", sans-serif;
-    }
+/* 💗 CARD */
+.card {
+  width: 320px;
+  background: #ffd6df;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 2;
+}
 
-    /* 📱 iPhone 14 Pro & điện thoại */
-    @media screen and (max-width: 430px) {
-      body {
-        background-size: contain;   /* 👉 thu nhỏ ảnh */
-        background-color: #000;     /* nền đen cho phần trống */
-        background-position: center center;
-        width: 100%;
-      }
-    }
-  </style>
+/* HÀNG TRÊN: ẢNH + TIÊU ĐỀ */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #d6336c;
+  text-align: left;
+}
+
+/* INPUT */
+input {
+  width: 95%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 4px;
+  background: #fff;
+  margin-bottom: 14px;
+}
+
+/* 🔢 KEYPAD */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.keypad button {
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #f48fb1;
+  color: white;
+  cursor: pointer;
+}
+
+.keypad button:active {
+  transform: scale(0.95);
+}
+
+.clear {
+  background: #f06292;
+}
+
+/* ❤️ TRÁI TIM BAY */
+.heart {
+  position: absolute;
+  color: #e91e63;
+  font-size: 18px;
+  animation: float 6s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+</style>
 </head>
+
 <body>
+
+<div class="card">
+
+  <!-- HÀNG TRÊN -->
+  <div class="header">
+    <img src="hinhanh/anhtrong.jpg" class="avatar">
+    <div class="title">Nhập ngày sinh của em 💕</div>
+  </div>
+
+  <!-- Ô NHẬP -->
+  <input type="password" id="code" readonly>
+
+  <!-- KEYPAD -->
+  <div class="keypad">
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button class="clear" onclick="clearCode()">←</button>
+    <button onclick="add('0')">0</button>
+    <button class="clear" onclick="submitCode()">OK</button>
+  </div>
+
+</div>
+
+<script>
+function add(num) {
+  const input = document.getElementById("code");
+  if (input.value.length < 8) {
+    input.value += num;
+  }
+}
+
+function clearCode() {
+  const input = document.getElementById("code");
+  input.value = input.value.slice(0, -1);
+}
+
+function submitCode() {
+  alert("Đúng rồi 💖");
+  window.location.href = "letter.html"; // 👉 chuyển trang
+}
+
+/* tim bay */
+for (let i = 0; i < 12; i++) {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+  document.body.appendChild(heart);
+}
+</script>
+
 </body>
 </html>
