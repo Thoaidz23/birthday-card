@@ -48,6 +48,27 @@ body {
     height: 180px;
   }
 }
+/* ❤️ TRÁI TIM BAY */
+.heart {
+  position: absolute;
+  bottom: -30px;
+  color: #ff2f6e;
+  font-size: 20px;
+  animation: floatUp linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh) scale(1.6);
+    opacity: 0;
+  }
+}
+
 </style>
 </head>
 
@@ -104,6 +125,31 @@ photos.forEach((photo, index) => {
   // delay chia đều → KHÔNG CÓ KHOẢNG TRỐNG
   photo.style.animationDelay = `-${(duration / total) * index}s`;
 });
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+
+  // vị trí ngang ngẫu nhiên
+  heart.style.left = Math.random() * 100 + "vw";
+
+  // kích thước ngẫu nhiên
+  heart.style.fontSize = Math.random() * 20 + 14 + "px";
+
+  // thời gian bay
+  const duration = Math.random() * 5 + 6;
+  heart.style.animationDuration = duration + "s";
+
+  document.body.appendChild(heart);
+
+  // xóa sau khi bay xong
+  setTimeout(() => {
+    heart.remove();
+  }, duration * 1000);
+}
+
+// tạo tim liên tục
+setInterval(createHeart, 300);
 </script>
 
 </body>
